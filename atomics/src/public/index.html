@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atomics</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Showcasing how Atomics can be used to implement predictable concurrent writes" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Using Atomics to Handle Concurrent Writes from Workers</h1>
+  </header>
+  <main>
+    <div class="info">
+      <p>Click on a button to trigger multiple actors (Workers) to increment or decrement the counter concurrently.</p>
+      <p>Each actor will update the counter 100,000 times by 1.</p>
+      <p>There are 4 concurrent actors, thus one button click should change the count by 400,000 exactly.</p>
+      <p class="fine-print">— A count below 0 is expected to overflow (Uint32 is used).</p>
+    </div>
+    <div class="counter-container">
+      <p>Counter:</p>
+      <p id="counter">0</p>
+    </div>
+    <div class="buttons">
+      <button type="button" id="increment">
+        + Trigger concurrent increments
+      </button>
+      <button type="button" id="decrement">
+        - Trigger concurrent decrements
+      </button>
+    </div>
+  </main>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
