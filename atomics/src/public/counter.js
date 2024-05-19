@@ -4,6 +4,7 @@
  * without worrying about updating the import when switching example.
  */
 
-import { Counter } from "./counter-example1.js";
+// import { Counter } from "./counter-example1.js";
+import { Counter } from "./counter-example2.js";
 
 export { Counter };
