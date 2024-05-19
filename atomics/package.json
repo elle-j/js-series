@@ -1,0 +1,11 @@
+{
+  "name": "atomics",
+  "module": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "serve": "bun --hot run src/server.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
