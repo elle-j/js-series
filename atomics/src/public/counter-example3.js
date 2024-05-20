@@ -37,7 +37,11 @@ export class Counter {
    * @returns {number} The current count.
    */
   get value() {
-    return this.#bufferView[Counter.#LOCATION];
+    this.#mutex.lock();
+    const value = this.#bufferView[Counter.#LOCATION];
+    this.#mutex.unlock();
+
+    return value;
   }
 
   /**
