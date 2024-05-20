@@ -6,12 +6,15 @@ This project explains and demonstrates those features and the related concepts b
 
 ### Complimentary blog post
 
-For a more detailed explanation and walkthrough, see my complimentary blog post: [JS Series: Using Atomics to Handle Concurrent Writes from Workers](https://www.ellej.dev/blog/js-series-using-atomics-to-handle-concurrent-writes-from-workers/).
+> [!TIP]
+> For a more detailed explanation and walkthrough, see my complimentary blog post:
+>
+> [JS Series: Using Atomics to Handle Concurrent Writes from Workers](https://www.ellej.dev/blog/js-series-using-atomics-to-handle-concurrent-writes-from-workers/).
 
 
 # Contents
 
-- [What is it and why do we need it?](#what-is-it-and-why-do-we-need-it-🤔)
+- [What is it and why do we need it?](#what-is-it-and-why-do-we-need-it)
   - [Web Workers and parallelism](#web-workers-and-parallelism)
   - [Shared memory and concurrency](#shared-memory-and-concurrency)
   - [Atomic operations](#atomic-operations)
@@ -22,7 +25,7 @@ For a more detailed explanation and walkthrough, see my complimentary blog post:
 - [Getting started](#getting-started)
 
 
-# What is it and why do we need it? 🤔
+# What is it and why do we need it?
 
 The ECMAScript proposal was motivated by wanting to enable more powerful parallelism to JavaScript. With parallelism and allowing threads to access the same memory, various complicated concurrency problems also get introduced. Therefore, a global `Atomics` object with static methods for dealing with parallelism and concurrency was also included in the proposal.
 
@@ -182,7 +185,7 @@ The project includes the following:
   * Once it receives a message from a worker being done counting, it updates the DOM with the new value.
   * (See [main.js](./src/public/main.js))
 
-Important to note is that `SharedArrayBuffer` is only supported if the pages served are cross-origin isolated. The repository therefore also contains [server.js](./src/server.js) which is a minimal HTTP server using Bun that will serve [index.html](./src/public/index.html) and the other files (see [Getting Started](#getting-started) for a one-step instruction on how to start the server).
+Important to note is that `SharedArrayBuffer` is only supported if the pages served are cross-origin isolated. The repository therefore also contains [server.js](./src/server.js) which is a minimal HTTP server using [Bun](https://bun.sh/) that will serve [index.html](./src/public/index.html) and the other files (see [Getting Started](#getting-started) for a one-step instruction on how to start the server).
 
 
 ## Counter example 1 (without atomics)
