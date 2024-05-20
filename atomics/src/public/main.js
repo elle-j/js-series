@@ -13,9 +13,10 @@ if (!crossOriginIsolated) {
   console.error("The files served need to be cross-origin isolated for this example to work.");
 }
 
-// Create the buffer used as the shared memory. This will later be
+// Create the buffers used as the shared memory. These will later be
 // shared via `worker.postMessage()` when communicating with the workers.
 const sharedCounterBuffer = new SharedArrayBuffer(Uint32Array.BYTES_PER_ELEMENT);
+const sharedMutexBuffer = new SharedArrayBuffer(Int32Array.BYTES_PER_ELEMENT);
 
 const NUM_WORKERS = 4;
 const workers = initWorkers(NUM_WORKERS);
@@ -61,6 +62,7 @@ function triggerConcurrentIncrements() {
     worker.postMessage({
       operation: "increment",
       sharedCounterBuffer,
+      sharedMutexBuffer,
     });
   }
 }
@@ -76,6 +78,7 @@ function triggerConcurrentDecrements() {
     worker.postMessage({
       operation: "decrement",
       sharedCounterBuffer,
+      sharedMutexBuffer,
     });
   }
 }

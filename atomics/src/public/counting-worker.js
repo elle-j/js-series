@@ -12,6 +12,7 @@ import { Counter } from "./counter.js";
  * @type {object}
  * @property {"increment"|"decrement"} operation
  * @property {SharedArrayBuffer} sharedCounterBuffer
+ * @property {SharedArrayBuffer} sharedMutexBuffer
  */
 
 /**
@@ -24,7 +25,7 @@ function handleMessageFromMain({ data }) {
   // The `counter` is instantiated here rather than sent as data due to how
   // objects are cloned when passed between threads. Internally, objects are
   // passed to the global `structuredClone()` which does not walk the prototype chain.
-  const counter = new Counter(data.sharedCounterBuffer);
+  const counter = new Counter(data.sharedCounterBuffer, data.sharedMutexBuffer);
 
   let numUpdates = 100_000;
   switch (data.operation) {
